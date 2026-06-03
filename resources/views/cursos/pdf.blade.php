@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Cursos</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            font-size:12px;
+            color:#222;
+        }
+
+        .header{
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        .header h1{
+            color:#7b1127;
+            margin-bottom:5px;
+        }
+
+        .header p{
+            color:#666;
+        }
+
+        .fecha{
+            text-align:right;
+            margin-bottom:15px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#7b1127;
+            color:white;
+            padding:10px;
+            border:1px solid #ddd;
+        }
+
+        td{
+            padding:8px;
+            border:1px solid #ddd;
+            text-align:center;
+        }
+
+        .footer{
+            margin-top:20px;
+            text-align:center;
+            color:#666;
+            font-size:11px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>REPORTE GENERAL DE CURSOS</h1>
+    <p>Sistema de Matrícula - Laravel</p>
+</div>
+
+<div class="fecha">
+    Fecha: {{ date('d/m/Y') }}
+</div>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Curso</th>
+            <th>Código</th>
+            <th>Créditos</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach($cursos as $curso)
+        <tr>
+            <td>{{ $curso->id }}</td>
+            <td>{{ $curso->nombre_curso }}</td>
+            <td>{{ $curso->codigo_curso }}</td>
+            <td>{{ $curso->creditos }}</td>
+            <td>{{ $curso->descripcion }}</td>
+        </tr>
+        @endforeach
+
+    </tbody>
+
+</table>
+
+<div class="footer">
+    Documento generado automáticamente por el Sistema de Matrícula.
+</div>
+
+</body>
+</html>
