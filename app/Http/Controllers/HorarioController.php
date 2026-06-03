@@ -23,7 +23,21 @@ class HorarioController extends Controller
 
     public function store(Request $request)
     {
-        Horario::create($request->all());
+        $request->validate([
+            'curso_id' => 'required|exists:cursos,id',
+            'dia_semana' => 'required',
+            'hora_inicio' => 'required',
+            'hora_fin' => 'required',
+            'id_aula' => 'required',
+        ]);
+
+        Horario::create($request->only([
+            'curso_id',
+            'dia_semana',
+            'hora_inicio',
+            'hora_fin',
+            'id_aula'
+        ]));
 
         return redirect()->route('horarios.index');
     }
@@ -43,8 +57,23 @@ class HorarioController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'curso_id' => 'required|exists:cursos,id',
+            'dia_semana' => 'required',
+            'hora_inicio' => 'required',
+            'hora_fin' => 'required',
+            'id_aula' => 'required',
+        ]);
+
         $horario = Horario::findOrFail($id);
-        $horario->update($request->all());
+
+        $horario->update($request->only([
+            'curso_id',
+            'dia_semana',
+            'hora_inicio',
+            'hora_fin',
+            'id_aula'
+        ]));
 
         return redirect()->route('horarios.index');
     }

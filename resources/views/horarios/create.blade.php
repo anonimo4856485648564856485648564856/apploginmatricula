@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <label>Curso</label>
-                <select name="id_curso" required>
+                <select name="curso_id" required>
                     <option value="">Seleccione un curso</option>
 
                     @foreach($cursos as $curso)
@@ -54,17 +54,13 @@
         </div>
 
         <div class="form-actions">
-
-            <a href="{{ route('horarios.index') }}"
-               class="btn btn-volver">
+            <a href="{{ route('horarios.index') }}" class="btn btn-volver">
                 ← Volver
             </a>
 
-            <button type="submit"
-                    class="btn btn-guardar">
+            <button type="submit" class="btn btn-guardar">
                 💾 Guardar Horario
             </button>
-
         </div>
 
     </form>
